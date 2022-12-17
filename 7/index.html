@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Name</title>
+</head>
+
+<body>
+
+  <form>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <b>First Name: </b> <span data-f-name>-</span> <br>
+  <b>Last Name: </b> <span data-l-name>-</span>
+
+  <script>
+    const form = document.querySelector('form');
+    form.onsubmit = function(e) {
+      e.preventDefault();
+
+      const name = document.querySelector('#name').value;
+
+      const splitName = name.split(' ');
+
+      const firstName = name.split(' ')[0];
+
+      const lastName = splitName.slice(1).join(' ');
+
+      document.querySelector('[data-f-name]').innerHTML = firstName;
+      document.querySelector('[data-l-name]').innerHTML = lastName;
+    }
+  </script>
+
+</body>
+
+</html>
