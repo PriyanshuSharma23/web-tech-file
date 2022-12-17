@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Array Element</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    form {
+      padding-top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input {
+      border: none;
+    }
+
+    button {
+      border: none;
+      background-color: white;
+    }
+
+    .input-left {
+      width: 150px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    .input-right {
+      width: 50px;
+      height: 30px;
+      border-radius: 5px;
+      padding: 5px;
+      background-color: rgb(7, 120, 233);
+      color: white;
+      font-weight: bold;
+    }
+
+    h2 {
+      padding-top: 10px;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Max In An Array</h1>
+  <br>
+  [<span data-current-array>
+
+  </span>]
+  <br>
+  <form>
+    <input class="input-left" type="text">
+    <button onclick="addNumber()" class="input-right">Add</button>
+  </form>
+
+  <h2></h2>
+
+
+  <script>
+    const array = []
+
+    const submit = document.querySelector('form')
+    submit.addEventListener('submit', function(e) {
+      e.preventDefault()
+    })
+
+    const findMax = () => {
+      return Math.max(...array)
+    }
+
+    function addNumber() {
+      const input = document.querySelector('input')
+      const currentArray = document.querySelector('[data-current-array]')
+
+      array.push(input.value)
+      currentArray.innerHTML = array.join(', ')
+      input.value = ''
+
+      document.querySelector('h2').innerHTML = `Max Element in Array is: ${findMax()}`
+    }
+  </script>
+
+</body>
+
+</html>

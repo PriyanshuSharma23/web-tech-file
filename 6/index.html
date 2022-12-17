@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    form {
+
+      padding: 20px;
+      text-align: center;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      background-color: antiquewhite;
+
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <table border="1">
+    <tr>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Mobile Number
+      </th>
+    </tr>
+  </table>
+
+  <form action="">
+    <input type="text" placeholder="Enter First Name">
+    <input type="text" placeholder="Enter Last Name">
+    <input type="email" placeholder="Enter Email">
+    <input type="text" placeholder="Enter Mobile Number">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const firstName = document.querySelector('input[type="text"]').value;
+      const lastName = document.querySelector('input[type="text"]:nth-of-type(2)').value;
+      const email = document.querySelector('input[type="email"]').value;
+      const mobileNumber = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+
+      const table = document.querySelector('table');
+
+      const newRow = document.createElement('tr');
+
+      const newFirstName = document.createElement('td');
+      newFirstName.textContent = firstName;
+
+      const newLastName = document.createElement('td');
+      newLastName.textContent = lastName;
+
+      const newEmail = document.createElement('td');
+      newEmail.textContent = email;
+
+      const newMobileNumber = document.createElement('td');
+      newMobileNumber.textContent = mobileNumber;
+
+      newRow.append(newFirstName, newLastName, newEmail, newMobileNumber);
+      table.append(newRow);
+
+    })
+  </script>
+
+</body>
+
+</html>

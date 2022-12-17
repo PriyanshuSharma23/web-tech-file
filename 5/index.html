@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Larger</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    section {
+      width: 90%;
+      height: 90vh;
+
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+
+      position: relative;
+    }
+
+    .number-input {
+      width: 200px;
+      height: 200px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 5px;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    form {
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    button {
+      border: none;
+      background-color: white;
+      border-radius: 5px;
+      padding: 15px;
+      padding-inline: 30px;
+      background-color: rgb(7, 120, 233);
+      color: white;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    .numbers {
+      display: flex;
+      gap: 10%;
+      justify-content: center;
+    }
+
+    .input-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+    }
+
+
+
+    [data-alert] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgb(38, 255, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1;
+      padding: 10px;
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div data-alert>
+    Larger Number is <span id="larger"></span>
+  </div>
+
+  <section>
+
+    <h1>Larger Number</h1>
+    <div class="input-section">
+      <form action="">
+        <div class="numbers">
+          <input type="number" class="number-input" placeholder="Number 1" id="number1">
+          <input type="number" class="number-input" placeholder="Number 2" id="number2">
+        </div>
+        <div>
+          <button type="submit" id="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const f = document.querySelector('form');
+
+    const alert = document.querySelector('[data-alert]');
+    const alertNumber = document.querySelector('#larger');
+
+    const showAlert = () => {
+      alert.style.visibility = 'visible';
+      setTimeout(() => {
+        alert.style.visibility = 'hidden';
+      }, 4000);
+    }
+
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let n1 = document.querySelector('#number1');
+      let n2 = document.querySelector('#number2');
+
+      if (n1.value == '' || n2.value == '') {
+        alert('Please enter a number');
+        return;
+      }
+
+      let n1Val = +n1.value;
+      let n2Val = +n2.value;
+
+
+
+      if (n1Val > n2Val) {
+        alertNumber.innerText = n1Val;
+        showAlert();
+      } else if (n2Val > n1Val) {
+        alertNumber.innerText = n2Val;
+        showAlert();
+      } else {
+        alertNumber.innerText = 'Both are equal';
+        showAlert();
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
