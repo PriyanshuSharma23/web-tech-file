@@ -84,8 +84,25 @@
       e.preventDefault()
     })
 
-    const findMax = () => {
-      return Math.max(...array)
+    const findMostFrequent = () => {
+      let max = 0
+      let maxElement = 0
+
+      for (let i = 0; i < array.length; i++) {
+        let count = 0
+        for (let j = 0; j < array.length; j++) {
+          if (array[i] === array[j]) {
+            count++
+          }
+        }
+
+        if (count > max) {
+          max = count
+          maxElement = array[i]
+        }
+      }
+
+      return maxElement
     }
 
     function addNumber() {
@@ -96,7 +113,7 @@
       currentArray.innerHTML = array.join(', ')
       input.value = ''
 
-      document.querySelector('h2').innerHTML = `Max Element in Array is: ${findMax()}`
+      document.querySelector('h2').innerHTML = `Max Element in Array is: ${findMostFrequent()}`
     }
   </script>
 
